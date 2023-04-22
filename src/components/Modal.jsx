@@ -1,9 +1,12 @@
 import CerrarBtn from '../img/cerrar.svg'
 
-const Modal = ({ setModal }) => {
+const Modal = ({ setModal, animarmodal, setAnimarmodal }) => {
 
     const handleCerrar = () => {
-        setModal(false)
+        setAnimarmodal(false)
+        setTimeout(() => {
+                    setModal(false)
+        }, 500);
     }
 
     return (
@@ -16,6 +19,10 @@ const Modal = ({ setModal }) => {
                     onClick={handleCerrar} 
                     />
             </div>
+
+            <form className={`formulario ${ animarmodal ? "animar" : "cerrar "} ` }>
+                <legend> Nuevo Gasto </legend>
+            </form>
         </div>
     )
 }
