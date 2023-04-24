@@ -13,7 +13,6 @@ const handleInputPresupuesto = (e) => {
     setMensaje( 'No es un presupuesto Válido')
    return
   }
-  console.log("todobien")
   
   setMensaje('')
   setIsValidPresupuesto(true)
