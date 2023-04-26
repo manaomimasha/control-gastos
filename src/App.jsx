@@ -3,6 +3,8 @@ import Header from './components/Header'
 import IconoNuevoGasto from './img/nuevo-gasto.svg'
 import { generarId } from './helpers'
 import Modal from './components/Modal'
+import ListadoGastos from './components/ListadoGastos'
+
 
 
 function App() {
@@ -12,7 +14,7 @@ function App() {
   const [modal, setModal] = useState(false)
   const [animarmodal, setAnimarmodal] = useState(false)
   const [gastos, setGastos] = useState([])
-  
+
 
   const handleNuevogasto = () => {
     setModal(true)
@@ -22,18 +24,23 @@ function App() {
   }
 
   const guardarGasto = gasto => {
-   gasto.id = generarId();
-   setGastos([ ...gastos, gasto ])
+    gasto.id = generarId();
+    setGastos([...gastos, gasto])
 
-   setAnimarmodal(false)
-        setTimeout(() => {
-            setModal(false)
-        }, 500);
-        
+    setAnimarmodal(false)
+    setTimeout(() => {
+      setModal(false)
+    }, 500);
+
+    
   }
+  
+  console.log(gastos)
 
   return (
     <>
+    
+
       <Header
         presupuesto={presupuesto}
         setPresupuesto={setPresupuesto}
@@ -41,19 +48,29 @@ function App() {
         setIsValidPresupuesto={setIsValidPresupuesto}
       />
       {isValidPresupuesto && (
-        <div className='nuevo-gasto'>
-          <img src={IconoNuevoGasto}
-            alt="IconoNuevGasto"
-            onClick={handleNuevogasto} />
-        </div>
+        <>
+          <main>
+            <ListadoGastos
+              gastos={gastos}
+
+            />
+          </main>
+
+          <div className='nuevo-gasto'>
+            <img src={IconoNuevoGasto}
+              alt="IconoNuevGasto"
+              onClick={handleNuevogasto} />
+          </div>
+
+        </>
       )}
 
-      { modal && <Modal
-      setModal= {setModal} 
-      animarmodal= {animarmodal}
-      setAnimarmodal={setAnimarmodal}
-      guardarGasto= {guardarGasto}
-      /> }
+      {modal && <Modal
+        setModal={setModal}
+        animarmodal={animarmodal}
+        setAnimarmodal={setAnimarmodal}
+        guardarGasto={guardarGasto}
+      />}
 
     </>
   )
