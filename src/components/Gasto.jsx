@@ -1,7 +1,18 @@
-const Gasto = () => {
+const Gasto = (  {lala}  ) => {
+  const {categoria, nombre} = lala;
+
   return (
-    <div>
-      <p>gastos.jsx</p>
+    <div className="gasto sombra">
+      <div className="contenido-gasto" >
+        <div className="descripcion-gasto">
+
+          <p className="categoria"> {categoria}</p>
+          <p className="nombre-gasto">{nombre}</p>
+
+        </div>
+      </div>
+
+
     </div>
   )
 }

@@ -7,11 +7,11 @@ const ListadoGastos = ({ gastos }) => {
             <h2 > {gastos.length ? "Gastos: " : "No hay gastos aun"}</h2>
 
             {
-                gastos.map(gasto =>
-                    <Gasto>
-                        key= {gasto.id}
-                        gasto={gasto}
-                    </Gasto>)
+                gastos.map(lala =>
+                    <Gasto
+                        key={lala.id}
+                        lala={lala}
+                    />)
             }
         </div>
 
